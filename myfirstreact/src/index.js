@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Car from './App.js';
 
 
-class Car extends React.Component {
+
+ReactDOM.render(<Car />, document.getElementById('root'));
+
+
+
+
+class Carx extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -214,7 +221,7 @@ class MyForm extends React.Component {
 //ReactDOM.render(<MyForm />, document.getElementById('root'));
 
 
-class MyHeader extends React.Component {
+class MyHeaderx extends React.Component {
   render() {
     return (
       <div>
@@ -224,4 +231,4 @@ class MyHeader extends React.Component {
     );
   }
 }
-ReactDOM.render(<MyHeader />, document.getElementById('root'));
+//ReactDOM.render(<MyHeader />, document.getElementById('root'));
