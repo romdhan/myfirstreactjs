@@ -3,46 +3,38 @@ import ReactDOM from 'react-dom';
 
 
 class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964,
+      test: "default"
+    };
+  }
+  static getDerivedStateFromProps(props, state) {
+	console.log("Avant render");
+    // return {test: props.test };
+  }
+  componentDidMount() {
+	console.log("Apres render");
+    setTimeout(() => {
+      this.setState({test: "yellow"})
+    }, 1000)
+  }
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
   render() {
-    return <h2>Hi, I am a Car!</h2>;
+	console.log("render itself");
+    return (
+      <div>
+        <h1>My {this.state.brand} Car is {this.state.test} and {this.state.color}</h1>		
+		<button type="button" onClick={this.changeColor}>Change color</button>		
+      </div>
+    );
   }
 }
 
-class Car2 extends React.Component {
-  constructor() {
-    super();
-    this.state = {color: "red"};
-  }
-  render() {
-    return <h2>I am a {this.state.color} Car!</h2>;
-  }
-}
-
-class Car3 extends React.Component {
-  render() {
-    return <h2>I am a {this.props.color} Car!</h2>;
-  }
-}
-
-function CarClass() {
-  return <h2>Hi, I am also a Car!</h2>;
-}
-
-const myelement = (
-  <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <tr>
-      <td>John</td>
-    </tr>
-    <tr>
-      <td>Elsa</td>
-    </tr>
-  </table>
-);
-
-const myfirstelement = <h1>Hello React!</h1>
-
-// ReactDOM.render(<Car2 />, document.getElementById('root'));
-ReactDOM.render(<Car3 color="green"/>, document.getElementById('root'));
+ReactDOM.render(<Car color="green" test="roma"/>, document.getElementById('root'));
